@@ -12,8 +12,8 @@ export const LATEST_PRODUCTS_LIMIT =
 
 
 export const signInDefaultValues = {
-    email: "",
-    password: "",
+    email: "admin@example.com",
+    password: "123456",
 };
 
 export const signUpDefaultValues = {
@@ -22,3 +22,18 @@ export const signUpDefaultValues = {
     password: 'password',
     confirmPassword: 'password',
 };
+
+export const shippingAddressDefaultValues = {
+    fullName: 'John Doe',
+    streetAddress: '123 Main St',
+    city: 'Anytown',
+    postalCode: '12345',
+    country: 'USA',
+};
+
+
+export const PAYMENT_METHODS = process.env.PAYMENT_METHODS
+    ? process.env.PAYMENT_METHODS.split(', ')
+    : ['PayPal', 'Stripe', 'CashOnDelivery'];
+export const DEFAULT_PAYMENT_METHOD =
+    process.env.DEFAULT_PAYMENT_METHOD || 'PayPal';

@@ -20,13 +20,10 @@ const CredentialsSignInForm = () => {
         );
     };
 
-
-
     const [data, action] = useActionState(signInWithCredentials, {
         message: '',
         success: false,
     });
-
 
     const searchParams = useSearchParams();
     const callbackUrl = searchParams.get('callbackUrl') || '/';
