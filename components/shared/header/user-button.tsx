@@ -13,7 +13,7 @@ import { signOutUser } from '@/lib/actions/user.actions';
 const UserButton = async () => {
 
 
-    
+
     const session = await auth();
     if (!session) {
         return (
@@ -22,10 +22,10 @@ const UserButton = async () => {
             </Link>
         );
     }
-        
-        
+
+
     const firstInitial = session.user?.name?.charAt(0).toUpperCase() ?? 'U';
-        
+
     return (<div className='flex gap-2 items-center'>
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -55,11 +55,22 @@ const UserButton = async () => {
                         User Profile
                     </Link>
                 </DropdownMenuItem>
+
                 <DropdownMenuItem>
                     <Link className='w-full' href='/user/orders'>
                         Order History
                     </Link>
                 </DropdownMenuItem>
+
+                {
+                    session?.user?.role === 'admin' && (
+                        <DropdownMenuItem>
+                            <Link className='w-full' href='/admin/overview'>
+                                Admin
+                            </Link>
+                        </DropdownMenuItem>
+                    )
+                }
 
                 <DropdownMenuItem className='p-0 mb-1'>
                     <form action={signOutUser} className='w-full'>
@@ -71,6 +82,7 @@ const UserButton = async () => {
                         </Button>
                     </form>
                 </DropdownMenuItem>
+
             </DropdownMenuContent>
         </DropdownMenu>
     </div>);

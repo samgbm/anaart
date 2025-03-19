@@ -15,7 +15,8 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { updateProfileSchema } from '@/lib/validator';
 import { updateProfile } from '@/lib/actions/user.actions';
-import { toast } from 'sonner';
+// import { toast } from 'sonner';
+import { useToast } from '@/hooks/use-toast';
 
 const ProfileForm = () => {
     const { data: session, update } = useSession();
@@ -28,12 +29,17 @@ const ProfileForm = () => {
         },
     });
 
+    const { toast } = useToast();
+
     // Submit form to update profile
     async function onSubmit(values: z.infer<typeof updateProfileSchema>) {
         const res = await updateProfile(values);
 
         if (!res.success)
-            return toast.error(res.message);
+            return toast({
+                variant: 'destructive',
+                description: res.message,
+            });
 
         const newSession = {
             ...session,
@@ -45,7 +51,9 @@ const ProfileForm = () => {
 
         await update(newSession);
 
-        toast.success(res.message);
+        toast({
+            description: res.message,
+        });
     }
 
 
