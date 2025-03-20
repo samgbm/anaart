@@ -18,15 +18,15 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
+import { updateUser } from '@/lib/actions/user.actions';
 import { USER_ROLES } from '@/lib/constants';
 import { updateUserSchema } from '@/lib/validator';
-import { ControllerRenderProps } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
+import { ControllerRenderProps, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-const updateUserForm = ({
+const UpdateUserForm = ({
     user,
 }: {
     user: z.infer<typeof updateUserSchema>;
@@ -39,7 +39,6 @@ const updateUserForm = ({
         defaultValues: user,
     });
 
-    // Handle submit
     const onSubmit = async (values: z.infer<typeof updateUserSchema>) => {
         try {
             const res = await updateUser({
@@ -47,18 +46,18 @@ const updateUserForm = ({
                 id: user.id,
             });
 
-            if (!res.success)
+            if (!res.success) {
                 return toast({
                     variant: 'destructive',
                     description: res.message,
                 });
+            }
 
             toast({
                 description: res.message,
             });
-
             form.reset();
-            router.push(`/admin/users`);
+            router.push('/admin/users');
         } catch (error) {
             toast({
                 variant: 'destructive',
@@ -69,11 +68,8 @@ const updateUserForm = ({
 
     return (
         <Form {...form}>
-            <form method='post' onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
-
-                {
-                    /* Email */
-                }
+            <form method='POST' onSubmit={form.handleSubmit(onSubmit)}>
+                {/* Email */}
                 <div>
                     <FormField
                         control={form.control}
@@ -81,23 +77,26 @@ const updateUserForm = ({
                         render={({
                             field,
                         }: {
-                            field: ControllerRenderProps<z.infer<typeof updateUserSchema>, 'email'>;
+                            field: ControllerRenderProps<
+                                z.infer<typeof updateUserSchema>,
+                                'email'
+                            >;
                         }) => (
                             <FormItem className='w-full'>
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
-                                    <Input disabled={true} placeholder='Enter user email' {...field} />
+                                    <Input
+                                        disabled={true}
+                                        placeholder='Enter user email'
+                                        {...field}
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                </div>;
-
-
-                {
-                    /* Name */
-                }
+                </div>
+                {/* Name */}
                 <div>
                     <FormField
                         control={form.control}
@@ -105,7 +104,10 @@ const updateUserForm = ({
                         render={({
                             field,
                         }: {
-                            field: ControllerRenderProps<z.infer<typeof updateUserSchema>, 'name'>;
+                            field: ControllerRenderProps<
+                                z.infer<typeof updateUserSchema>,
+                                'name'
+                            >;
                         }) => (
                             <FormItem className='w-full'>
                                 <FormLabel>Name</FormLabel>
@@ -116,11 +118,8 @@ const updateUserForm = ({
                             </FormItem>
                         )}
                     />
-                </div>;
-
-                {
-                    /* Role */
-                }
+                </div>
+                {/* Role */}
                 <div>
                     <FormField
                         control={form.control}
@@ -128,11 +127,17 @@ const updateUserForm = ({
                         render={({
                             field,
                         }: {
-                            field: ControllerRenderProps<z.infer<typeof updateUserSchema>, 'role'>;
+                            field: ControllerRenderProps<
+                                z.infer<typeof updateUserSchema>,
+                                'role'
+                            >;
                         }) => (
-                            <FormItem className=' items-center'>
+                            <FormItem className='w-full'>
                                 <FormLabel>Role</FormLabel>
-                                <Select onValueChange={field.onChange} value={field.value.toString()}>
+                                <Select
+                                    onValueChange={field.onChange}
+                                    value={field.value.toString()}
+                                >
                                     <FormControl>
                                         <SelectTrigger>
                                             <SelectValue placeholder='Select a role' />
@@ -141,7 +146,7 @@ const updateUserForm = ({
                                     <SelectContent>
                                         {USER_ROLES.map((role) => (
                                             <SelectItem key={role} value={role}>
-                                                {role}
+                                                {role.charAt(0).toUpperCase() + role.slice(1)}
                                             </SelectItem>
                                         ))}
                                     </SelectContent>
@@ -150,21 +155,19 @@ const updateUserForm = ({
                             </FormItem>
                         )}
                     />
-                </div>;
-
-                <div className='flex-between'>
+                </div>
+                <div className='flex-between mt-6'>
                     <Button
                         type='submit'
                         className='w-full'
                         disabled={form.formState.isSubmitting}
                     >
-                        {form.formState.isSubmitting ? 'Submitting...' : `Update User `}
+                        {form.formState.isSubmitting ? 'Submitting...' : 'Update User'}
                     </Button>
                 </div>
-
             </form>
         </Form>
     );
 };
 
-export default updateUserForm;
+export default UpdateUserForm;
