@@ -69,6 +69,9 @@ const UpdateUserForm = ({
     return (
         <Form {...form}>
             <form method='POST' onSubmit={form.handleSubmit(onSubmit)}>
+
+
+
                 {/* Email */}
                 <div>
                     <FormField
@@ -96,6 +99,10 @@ const UpdateUserForm = ({
                         )}
                     />
                 </div>
+
+
+
+
                 {/* Name */}
                 <div>
                     <FormField
@@ -119,6 +126,10 @@ const UpdateUserForm = ({
                         )}
                     />
                 </div>
+
+
+
+
                 {/* Role */}
                 <div>
                     <FormField
@@ -156,6 +167,8 @@ const UpdateUserForm = ({
                         )}
                     />
                 </div>
+
+                
                 <div className='flex-between mt-6'>
                     <Button
                         type='submit'

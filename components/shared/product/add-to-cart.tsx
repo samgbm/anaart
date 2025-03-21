@@ -40,7 +40,6 @@ const AddToCart = ({ cart, item }: { cart?: Cart, item: CartItem; }) => {
         });
     };
 
-
     // Remove item from cart
     const handleRemoveFromCart = async () => {
         startTransition(async () => {
@@ -55,13 +54,12 @@ const AddToCart = ({ cart, item }: { cart?: Cart, item: CartItem; }) => {
 
     };
 
-
     const existItem =
         cart && cart.items.find((x) => x.productId === item.productId);
 
     return existItem ? (
         <div>
-            <Button   disabled={isPending} type='button' variant='outline' onClick={handleRemoveFromCart}>
+            <Button disabled={isPending} type='button' variant='outline' onClick={handleRemoveFromCart}>
                 {isPending ? (
                     <Loader className='w-4 h-4  animate-spin' />
                 ) : (
@@ -78,13 +76,13 @@ const AddToCart = ({ cart, item }: { cart?: Cart, item: CartItem; }) => {
             </Button>
         </div>
     ) : (
-            <Button disabled={isPending}  className='w-full' type='button' onClick={handleAddToCart}>
-                {isPending ? (
-                    <Loader className='w-4 h-4 animate-spin' />
-                ) : (
-                    <Plus className='w-4 h-4' />
-                )}
-                Add to cart
+        <Button disabled={isPending} className='w-full' type='button' onClick={handleAddToCart}>
+            {isPending ? (
+                <Loader className='w-4 h-4 animate-spin' />
+            ) : (
+                <Plus className='w-4 h-4' />
+            )}
+            Add to cart
         </Button>
     );
 };

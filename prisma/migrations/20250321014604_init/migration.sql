@@ -1,4 +1,32 @@
 -- CreateTable
+CREATE TABLE "ArtWork" (
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
+    "name" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "category" TEXT NOT NULL,
+    "style" TEXT NOT NULL,
+    "subject" TEXT NOT NULL,
+    "medium" TEXT NOT NULL,
+    "material" TEXT NOT NULL,
+    "price" DECIMAL(12,2) NOT NULL DEFAULT 0,
+    "size" TEXT NOT NULL,
+    "orientation" TEXT NOT NULL,
+    "color" TEXT NOT NULL,
+    "author" TEXT NOT NULL,
+    "authorcountry" TEXT NOT NULL,
+    "media" TEXT[],
+    "description" TEXT NOT NULL,
+    "stock" INTEGER NOT NULL,
+    "rating" DECIMAL(3,2) NOT NULL DEFAULT 0,
+    "numReviews" INTEGER NOT NULL DEFAULT 0,
+    "isFeatured" BOOLEAN NOT NULL DEFAULT false,
+    "banner" TEXT,
+    "createdAt" TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ArtWork_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "User" (
     "id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "name" TEXT NOT NULL DEFAULT 'NO_NAME',
@@ -51,6 +79,9 @@ CREATE TABLE "VerificationToken" (
 
     CONSTRAINT "VerificationToken_pkey" PRIMARY KEY ("identifier","token")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "product_slug_idx" ON "ArtWork"("slug");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "user_email_idx" ON "User"("email");

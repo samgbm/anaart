@@ -41,7 +41,7 @@ const SignIn = async (props: {
                     <Link href='/' className='flex-center'>
                         <Image
                             priority={true}
-                            src='/images/logo.svg'
+                            src='/images/lunalogo2.svg'
                             width={100}
                             height={100}
                             alt={`${APP_NAME} logo`}

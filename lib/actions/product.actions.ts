@@ -36,22 +36,51 @@ export async function getProductById(productId: string) {
 
 // Get all products
 export async function getAllProducts({
-    query,
-    limit = PAGE_SIZE,
-    page,
+    style,
+    subject,
+    medium,
+    material,
+    size,
     category,
+    query,
     price,
     rating,
+    page,
     sort,
+    limit = PAGE_SIZE,
 }: {
-    query: string;
-    limit?: number;
-    page: number;
+    style: string;
+    subject: string;
+    medium: string;
+    material: string;
+    size: string;
     category?: string;
+    query: string;
     price?: string;
     rating?: string;
+    limit?: number;
+    page: number;
     sort?: string;
 }) {
+
+    // style filter
+    const styleFilter = style && style !== 'all' ? { style } : {};
+
+    // subject filter
+    const subjectFilter = subject && subject !== 'all' ? { subject } : {};
+
+    // medium filter
+    const mediumFilter = medium && medium !== 'all' ? { medium } : {};
+
+    // material filter
+    const materialFilter = material && material !== 'all' ? { material } : {};
+
+    // size filter
+    const sizeFilter = size && size !== 'all' ? { size } : {};
+
+    // Category filter
+    const categoryFilter = category && category !== 'all' ? { category } : {};
+
     // Query filter
     const queryFilter: Prisma.ProductWhereInput =
         query && query !== 'all'
@@ -62,9 +91,6 @@ export async function getAllProducts({
                 } as Prisma.StringFilter,
             }
             : {};
-
-    // Category filter
-    const categoryFilter = category && category !== 'all' ? { category } : {};
 
     // Price filter
     const priceFilter: Prisma.ProductWhereInput =
@@ -90,6 +116,11 @@ export async function getAllProducts({
     // Fetch products
     const data = await prisma.product.findMany({
         where: {
+            ...styleFilter,
+            ...subjectFilter,
+            ...mediumFilter,
+            ...materialFilter,
+            ...sizeFilter,
             ...queryFilter,
             ...categoryFilter,
             ...priceFilter,
@@ -154,7 +185,7 @@ export async function createProduct(data: z.infer<typeof insertProductSchema>) {
     } catch (error) {
         return { success: false, message: formatError(error) };
     }
-}   
+}
 
 // Update Product
 export async function updateProduct(data: z.infer<typeof updateProductSchema>) {

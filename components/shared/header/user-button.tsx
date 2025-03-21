@@ -12,8 +12,6 @@ import { signOutUser } from '@/lib/actions/user.actions';
 
 const UserButton = async () => {
 
-
-
     const session = await auth();
     if (!session) {
         return (

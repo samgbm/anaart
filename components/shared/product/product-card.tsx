@@ -13,7 +13,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                 <Link href={`/product/${product.slug}`}>
                     <Image
                         priority={true}
-                        src={product.images![0]}
+                        src={product.media![0]}
                         alt={product.name}
                         className='aspect-square object-cover rounded'
                         height={300}
@@ -22,7 +22,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                 </Link>
             </CardHeader>
             <CardContent className='p-4 grid gap-4'>
-                <div className='text-xs'>{product.brand}</div>
+                {/* <div className='text-xs'>{product.brand}</div> */}
                 <Link href={`/product/${product.slug}`}>
                     <h2 className='text-sm font-medium'>{product.name}</h2>
                 </Link>

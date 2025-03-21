@@ -16,8 +16,8 @@ export default async function AdminLayout({
                 <div className='border-b container mx-auto'>
                     <div className='flex h-16 items-center px-4'>
                         <Link href='/' className='w-22'>
-                            <Image
-                                src='/images/logo.svg'
+                            <Image 
+                                src='/images/lunalogo2.jpg'
                                 width={48}
                                 height={48}
                                 alt={`${APP_NAME} logo`}

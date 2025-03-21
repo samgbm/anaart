@@ -33,7 +33,7 @@ const Menu = () => {
                                     Cart
                                 </Link>
                             </Button>
-                            <UserButton />
+                            {/* <UserButton /> */}
                         </SheetContent>
                     </Sheet>
                 </nav>

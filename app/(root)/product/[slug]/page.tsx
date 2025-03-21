@@ -13,9 +13,9 @@ import Rating from '@/components/shared/product/rating';
 const ProductDetailsPage = async (props: {
     params: Promise<{ slug: string }>;
 }) => {
-    const params = await props.params;
+    const { slug } = await props.params;
 
-    const { slug } = params;
+    // const { slug } = params;
 
     const product = await getProductBySlug(slug);
     if (!product) notFound();
@@ -30,14 +30,14 @@ const ProductDetailsPage = async (props: {
                 <div className='grid grid-cols-1 md:grid-cols-5'>
                     {/* Images Column */}
                     <div className='col-span-2'>
-                        <ProductImages images={product.images} />
+                        <ProductImages images={product.media} />
                     </div>
 
                     {/* Details Column */}
                     <div className='col-span-2 p-5'>
                         <div className='flex flex-col gap-6'>
                             <p>
-                                {product.brand} {product.category}
+                                {product.style} {product.category}
                             </p>
                             <h1 className='h3-bold'>{product.name}</h1>
                             <Rating value={Number(product.rating)} />
@@ -84,7 +84,7 @@ const ProductDetailsPage = async (props: {
                                                 slug: product.slug,
                                                 price: product.price,
                                                 qty: 1,
-                                                image: product.images![0],
+                                                image: product.media![0],
                                             }}
                                         />
                                     </div>
@@ -97,11 +97,11 @@ const ProductDetailsPage = async (props: {
 
             <section className='mt-10'>
                 <h2 className='h2-bold  mb-5'>Customer Reviews</h2>
-                <ReviewList
+                {/* <ReviewList
                     productId={product.id}
                     productSlug={product.slug}
                     userId={userId || ''}
-                />
+                /> */}
             </section>
         </>
     );
