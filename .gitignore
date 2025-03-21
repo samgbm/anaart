@@ -40,5 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# jest files
-jest*
+# Ignore Jest config files
+jest.config.ts
+jest.setup.ts
