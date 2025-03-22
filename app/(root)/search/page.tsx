@@ -7,6 +7,16 @@ import {
 } from '@/lib/actions/product.actions';
 import { PRODUCT_CATEGORIES, PRODUCT_MATERIALS, PRODUCT_MEDIUMS, PRODUCT_PRICES, PRODUCT_RATINGS, PRODUCT_SIZES, PRODUCT_STYLES, PRODUCT_SUBJECTS } from '@/lib/constants';
 import Link from 'next/link';
+import {
+    DropdownMenu,
+    DropdownMenuCheckboxItem,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { ChevronDown } from 'lucide-react';
 
 
 
@@ -146,160 +156,205 @@ const SearchPage = async (props: {
 
 
                 {/* Category Links */}
-                <div className='pb-3 border-b'>
-                    <div className='text-2xl uppercase font-serif mt-3 mb-2'>Category</div>
-                    <ul className='space-y-1'>
-                        <li>
-                            <Link
-                                className={`${('all' === category || '' === category) && 'font-bold'}`}
-                                href={getFilterUrl({ c: 'all' })}
-                            >
-                                Any
-                            </Link>
-                        </li>
-                        {PRODUCT_CATEGORIES.map((x) => (
-                            <li key={x}>
+
+                <div className="pb-3 border-b">
+                    <div className="text-2xl uppercase font-serif mt-3 mb-2">Category</div>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <button className="flex-between text-left w-full px-3 py-2 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                {category === '' || category === 'all' ? 'Any' : category} <ChevronDown />
+                            </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56">
+                            <DropdownMenuItem asChild>
                                 <Link
-                                    className={`${x === category && 'font-bold'}`}
-                                    href={getFilterUrl({ c: x })}
+                                    href={getFilterUrl({ c: 'all' })}
+                                    className={`w-full px-4 py-2 ${('all' === category || '' === category) ? 'font-bold bg-gray-200' : ''}`}
                                 >
-                                    {x}
+                                    Any
                                 </Link>
-                            </li>
-                        ))}
-                    </ul>
+                            </DropdownMenuItem>
+                            {PRODUCT_CATEGORIES.map((x) => (
+                                <DropdownMenuItem key={x} asChild>
+                                    <Link
+                                        href={getFilterUrl({ c: x })}
+                                        className={`w-full px-4 py-2 ${x === category ? 'font-bold bg-gray-200' : ''}`}
+                                    >
+                                        {x}
+                                    </Link>
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
 
-                {/* Style Links */}
-                <div className='pb-3 border-b'>
-                    <div className='text-2xl uppercase font-serif mt-3 mb-2'>Style</div>
-                    <ul className='space-y-1'>
-                        <li>
-                            <Link
-                                className={`${('all' === style || '' === style) && 'font-bold'
-                                    }`}
-                                href={getFilterUrl({ st: 'all' })}
-                            >
-                                Any
-                            </Link>
-                        </li>
-                        {PRODUCT_STYLES.map((x) => (
-                            <li key={x}>
+
+
+
+
+                <div className="pb-3 border-b">
+                    <div className="text-2xl uppercase font-serif mt-3 mb-2">Style</div>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <button className="flex-between text-left w-full px-3 py-2 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                {style === '' || style === 'all' ? 'Any' : style} <ChevronDown />
+                            </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56">
+                            <DropdownMenuItem asChild>
                                 <Link
-                                    className={`${x === style && 'font-bold'}`}
-                                    href={getFilterUrl({ st: x })}
+                                    href={getFilterUrl({ st: 'all' })}
+                                    className={`w-full px-4 py-2 ${('all' === style || '' === style) ? 'font-bold bg-gray-200' : ''}`}
                                 >
-                                    {x}
+                                    Any
                                 </Link>
-                            </li>
-                        ))}
-                    </ul>
+                            </DropdownMenuItem>
+                            {PRODUCT_STYLES.map((x) => (
+                                <DropdownMenuItem key={x} asChild>
+                                    <Link
+                                        href={getFilterUrl({ st: x })}
+                                        className={`w-full px-4 py-2 ${x === style ? 'font-bold bg-gray-200' : ''}`}
+                                    >
+                                        {x}
+                                    </Link>
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
 
                 {/* Subject Links */}
-                <div className='pb-3 border-b'>
-                    <div className='text-2xl uppercase font-serif mt-3 mb-2'>Subject</div>
-                    <ul className='space-y-1'>
-                        <li>
-                            <Link
-                                className={`${('all' === subject || '' === subject) && 'font-bold'
-                                    }`}
-                                href={getFilterUrl({ su: 'all' })}
-                            >
-                                Any
-                            </Link>
-                        </li>
-                        {PRODUCT_SUBJECTS.map((x) => (
-                            <li key={x}>
+                <div className="pb-3 border-b">
+                    <div className="text-2xl uppercase font-serif mt-3 mb-2">Subject</div>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <button className="flex-between text-left w-full px-3 py-2 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                {subject === '' || subject === 'all' ? 'Any' : subject} <ChevronDown />
+                            </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56">
+                            <DropdownMenuItem asChild>
                                 <Link
-                                    className={`${x === subject && 'font-bold'}`}
-                                    href={getFilterUrl({ su: x })}
+                                    href={getFilterUrl({ su: 'all' })}
+                                    className={`w-full px-4 py-2 ${('all' === subject || '' === subject) ? 'font-bold bg-gray-200' : ''}`}
                                 >
-                                    {x}
+                                    Any
                                 </Link>
-                            </li>
-                        ))}
-                    </ul>
+                            </DropdownMenuItem>
+                            {PRODUCT_SUBJECTS.map((x) => (
+                                <DropdownMenuItem key={x} asChild>
+                                    <Link
+                                        href={getFilterUrl({ su: x })}
+                                        className={`w-full px-4 py-2 ${x === subject ? 'font-bold bg-gray-200' : ''}`}
+                                    >
+                                        {x}
+                                    </Link>
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
 
 
                 {/* Medium Links */}
-                <div className='pb-3 border-b'>
-                    <div className='text-2xl uppercase font-serif mt-3 mb-2'>Medium</div>
-                    <ul className='space-y-1'>
-                        <li>
-                            <Link
-                                className={`${('all' === medium || '' === medium) && 'font-bold'
-                                    }`}
-                                href={getFilterUrl({ me: 'all' })}
-                            >
-                                Any
-                            </Link>
-                        </li>
-                        {PRODUCT_MEDIUMS.map((x) => (
-                            <li key={x}>
+                <div className="pb-3 border-b">
+                    <div className="text-2xl uppercase font-serif mt-3 mb-2">Medium</div>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <button className="flex-between text-left w-full px-3 py-2 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                {medium === '' || medium === 'all' ? 'Any' : medium} <ChevronDown />
+                            </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56">
+                            <DropdownMenuItem asChild>
                                 <Link
-                                    className={`${x === medium && 'font-bold'}`}
-                                    href={getFilterUrl({ me: x })}
+                                    href={getFilterUrl({ me: 'all' })}
+                                    className={`w-full px-4 py-2 ${('all' === medium || '' === medium) ? 'font-bold bg-gray-200' : ''}`}
                                 >
-                                    {x}
+                                    Any
                                 </Link>
-                            </li>
-                        ))}
-                    </ul>
+                            </DropdownMenuItem>
+                            {PRODUCT_MEDIUMS.map((x) => (
+                                <DropdownMenuItem key={x} asChild>
+                                    <Link
+                                        href={getFilterUrl({ me: x })}
+                                        className={`w-full px-4 py-2 ${x === medium ? 'font-bold bg-gray-200' : ''}`}
+                                    >
+                                        {x}
+                                    </Link>
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
 
                 {/* Material Links */}
-                <div className='pb-3 border-b'>
-                    <div className='text-xl mt-3 mb-2'>Material</div>
-                    <ul className='space-y-1'>
-                        <li>
-                            <Link
-                                className={`${('all' === material || '' === material) && 'font-bold'
-                                    }`}
-                                href={getFilterUrl({ c: 'all' })}
-                            >
-                                Any
-                            </Link>
-                        </li>
-                        {PRODUCT_MATERIALS.map((x) => (
-                            <li key={x}>
+                <div className="pb-3 border-b">
+                    <div className="text-xl mt-3 mb-2">Material</div>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <button className="flex-between text-left w-full px-3 py-2 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                {material === '' || material === 'all' ? 'Any' : material} <ChevronDown />
+                            </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56">
+                            <DropdownMenuItem asChild>
                                 <Link
-                                    className={`${x === material && 'font-bold'}`}
-                                    href={getFilterUrl({ ma: x })}
+                                    href={getFilterUrl({ ma: 'all' })}
+                                    className={`w-full px-4 py-2 ${('all' === material || '' === material) ? 'font-bold bg-gray-200' : ''}`}
                                 >
-                                    {x}
+                                    Any
                                 </Link>
-                            </li>
-                        ))}
-                    </ul>
+                            </DropdownMenuItem>
+                            {PRODUCT_MATERIALS.map((x) => (
+                                <DropdownMenuItem key={x} asChild>
+                                    <Link
+                                        href={getFilterUrl({ ma: x })}
+                                        className={`w-full px-4 py-2 ${x === material ? 'font-bold bg-gray-200' : ''}`}
+                                    >
+                                        {x}
+                                    </Link>
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
 
 
                 {/* Price Links */}
-                <div className='pb-3 border-b'>
-                    <div className='text-xl mt-8 mb-2'>Price</div>
-                    <ul className='space-y-1'>
-                        <li>
-                            <Link
-                                className={`  ${'all' === price && 'font-bold'}`}
-                                href={getFilterUrl({ p: 'all' })}
-                            >
-                                Any
-                            </Link>
-                        </li>
-                        {PRODUCT_PRICES.map((p) => (
-                            <li key={p.value}>
+                <div className="pb-3 border-b">
+                    <div className="text-xl mt-8 mb-2">Price</div>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <button className="flex-between text-left w-full px-3 py-2 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                {price === '' || price === 'all'
+                                    ? 'Any'
+                                    : PRODUCT_PRICES.find((p) => p.value === price)?.name || 'Any'} <ChevronDown />
+                            </button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56">
+                            <DropdownMenuItem asChild>
                                 <Link
-                                    href={getFilterUrl({ p: p.value })}
-                                    className={`${p.value === price && 'font-bold'}`}
+                                    href={getFilterUrl({ p: 'all' })}
+                                    className={`w-full px-4 py-2 ${('all' === price || '' === price) ? 'font-bold bg-gray-200' : ''}`}
                                 >
-                                    {p.name}
+                                    Any
                                 </Link>
-                            </li>
-                        ))}
-                    </ul>
+                            </DropdownMenuItem>
+                            {PRODUCT_PRICES.map((p) => (
+                                <DropdownMenuItem key={p.value} asChild>
+                                    <Link
+                                        href={getFilterUrl({ p: p.value })}
+                                        className={`w-full px-4 py-2 ${p.value === price ? 'font-bold bg-gray-200' : ''}`}
+                                    >
+                                        {p.name}
+                                    </Link>
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                 </div>
+
 
                 {/* Size Links */}
                 <div className='pb-3 border-b'>
@@ -329,7 +384,7 @@ const SearchPage = async (props: {
 
                 {/* Rating Links */}
                 <div className='pb-3 border-b'>
-                    <div className='text-xl mt-8 mb-2'>Rating</div>
+                    <div className='text-xl mt-3 mb-2'>Rating</div>
                     <ul className='space-y-1'>
                         <li>
                             <Link
