@@ -48,6 +48,8 @@ const placeOrderPage = async () => {
 
             <div className='grid md:grid-cols-3 md:gap-5'>
                 <div className='overflow-x-auto md:col-span-2 space-y-4'>
+
+
                     <Card>
                         <CardContent className='p-4 gap-4'>
                             <h2 className='text-xl pb-4'>Shipping Address</h2>
@@ -64,6 +66,8 @@ const placeOrderPage = async () => {
                         </CardContent>
                     </Card>
 
+
+
                     <Card>
                         <CardContent className='p-4 gap-4'>
                             <h2 className='text-xl pb-4'>Payment Method</h2>
@@ -75,6 +79,8 @@ const placeOrderPage = async () => {
                             </div>
                         </CardContent>
                     </Card>
+
+
 
                     <Card>
                         <CardContent className='p-4 gap-4'>
@@ -90,7 +96,7 @@ const placeOrderPage = async () => {
                                 <TableBody>
                                     {cart.items.map((item) => (
                                         <TableRow key={item.slug}>
-                                            <TableCell>
+                                            <   TableCell>
                                                 <Link
                                                     href={`/product/${item.slug}`}
                                                     className='flex items-center'
@@ -119,7 +125,15 @@ const placeOrderPage = async () => {
                             </Link>
                         </CardContent>
                     </Card>
+
+
+
                 </div>
+
+
+
+
+
                 <div>
                     <Card>
                         <CardContent className='p-4 gap-4 space-y-4'>
@@ -127,14 +141,17 @@ const placeOrderPage = async () => {
                                 <div>Items</div>
                                 <div>{formatCurrency(cart.itemsPrice)}</div>
                             </div>
+
                             <div className='flex justify-between'>
                                 <div>Tax</div>
                                 <div>{formatCurrency(cart.taxPrice)}</div>
                             </div>
+
                             <div className='flex justify-between'>
                                 <div>Shipping</div>
                                 <div>{formatCurrency(cart.shippingPrice)}</div>
                             </div>
+                            
                             <div className='flex justify-between'>
                                 <div>Total</div>
                                 <div>{formatCurrency(cart.totalPrice)}</div>

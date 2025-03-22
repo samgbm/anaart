@@ -32,6 +32,8 @@ const AdminOverviewPage = async () => {
         <div className='space-y-2'>
             <h1 className='h2-bold'>Dashboard</h1>
             <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
+
+
                 <Card>
                     <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                         <CardTitle className='text-sm font-medium'>Total Revenue</CardTitle>
@@ -43,6 +45,9 @@ const AdminOverviewPage = async () => {
                         </div>
                     </CardContent>
                 </Card>
+
+
+
                 <Card>
                     <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                         <CardTitle className='text-sm font-medium'>Sales</CardTitle>
@@ -54,6 +59,9 @@ const AdminOverviewPage = async () => {
                         </div>
                     </CardContent>
                 </Card>
+
+
+
                 <Card>
                     <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                         <CardTitle className='text-sm font-medium'>Customers</CardTitle>
@@ -63,6 +71,9 @@ const AdminOverviewPage = async () => {
                         <div className='text-2xl font-bold'>{summary.usersCount}</div>
                     </CardContent>
                 </Card>
+
+
+
                 <Card>
                     <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                         <CardTitle className='text-sm font-medium'>Products</CardTitle>
@@ -73,6 +84,10 @@ const AdminOverviewPage = async () => {
                     </CardContent>
                 </Card>
             </div>
+
+
+
+            
             <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-7'>
                 <Card className='col-span-4'>
                     <CardHeader>

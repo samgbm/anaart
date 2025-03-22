@@ -46,7 +46,7 @@ const ProductDetailsPage = async (props: {
                             <div className='flex flex-col gap-3 sm:flex-row sm:items-center'>
                                 <ProductPrice
                                     value={Number(product.price)}
-                                    className='w-24 rounded-full bg-green-100 text-green-700 px-5 py-2'
+                                    className=' rounded-full bg-green-100 text-green-700 px-5 py-2'
                                 />
                             </div>
                         </div>
@@ -97,11 +97,11 @@ const ProductDetailsPage = async (props: {
 
             <section className='mt-10'>
                 <h2 className='h2-bold  mb-5'>Customer Reviews</h2>
-                {/* <ReviewList
+                <ReviewList
                     productId={product.id}
                     productSlug={product.slug}
                     userId={userId || ''}
-                /> */}
+                />
             </section>
         </>
     );

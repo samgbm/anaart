@@ -35,14 +35,17 @@ const SignUp = async (props: {
     return (
         <div className='w-full max-w-md mx-auto'>
             <Card>
+
+
                 <CardHeader className='space-y-4'>
                     <Link href='/' className='flex-center'>
                         <Image
                             priority={true}
-                            src='/images/logo.svg'
+                            src='/images/lunalogo2.jpg'
                             width={100}
                             height={100}
                             alt={`${APP_NAME} logo`}
+                            className='rounded-full'
                         />
                     </Link>
                     <CardTitle className='text-center'>Create Account</CardTitle>
@@ -50,9 +53,16 @@ const SignUp = async (props: {
                         Enter your information below to create your account
                     </CardDescription>
                 </CardHeader>
+
+
+
+
                 <CardContent className='space-y-4'>
                     <SignUpForm />
                 </CardContent>
+
+
+
             </Card>
         </div>
     );

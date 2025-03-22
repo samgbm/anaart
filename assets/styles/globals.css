@@ -102,6 +102,8 @@
   }
 }
 
+/* new themes */
+
 /* Uploadthing button text override */
 html.dark .upload-field .text-white {
   color: #ffffff !important;
@@ -109,4 +111,40 @@ html.dark .upload-field .text-white {
 
 .upload-field .text-white {
   color: #000 !important;
+}
+
+/* Default (light) theme */
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+/* Dark theme */
+.dark {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+}
+
+/* Pink theme */
+.pink {
+  --background: #fff1f2; /* Light pink */
+  --foreground: #831843; /* Dark pinkish-red */
+}
+
+/* Green theme */
+.green {
+  --background: #d1fae5; /* Light green */
+  --foreground: #065f46; /* Dark green */
+}
+
+/* Blue theme */
+.blue {
+  --background: #dbeafe; /* Light blue */
+  --foreground: #1e3a8a; /* Dark blue */
+}
+
+/* Apply variables to body or elements */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
 }

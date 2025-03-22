@@ -6,28 +6,29 @@ export const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhos
 
 
 export const LATEST_PRODUCTS_LIMIT =
-    Number(process.env.LATEST_PRODUCTS_LIMIT) || 3;
+    Number(process.env.LATEST_PRODUCTS_LIMIT) || 4;
 
 
 
 export const signInDefaultValues = {
-    email: "admin@example.com",
-    password: "123456",
+    email: "",
+    password: "",
 };
 
 export const signUpDefaultValues = {
-    name: 'Steve Smith',
-    email: 'steve@example.com',
-    password: 'password',
-    confirmPassword: 'password',
+    name: '',
+    images: [],
+    email: '',
+    password: '',
+    confirmPassword: '',
 };
 
 export const shippingAddressDefaultValues = {
-    fullName: 'John Doe',
-    streetAddress: '123 Main St',
-    city: 'Anytown',
-    postalCode: '12345',
-    country: 'USA',
+    fullName: '',
+    streetAddress: '',
+    city: '',
+    postalCode: '',
+    country: '',
 };
 
 
@@ -124,3 +125,5 @@ export const PRODUCT_COLORS = ['Blue', 'Green', 'Yellow', 'Pink', 'Black', 'Whit
 
 
 export const PRODUCT_RATINGS = [4, 3, 2, 1];
+
+export const DEFAULT_LOGO = '/images/lunalogo2.jpg';

@@ -2,7 +2,7 @@
 
 import { useToast } from '@/hooks/use-toast';
 import { PRODUCT_CATEGORIES, PRODUCT_COLORS, PRODUCT_MATERIALS, PRODUCT_MEDIUMS, PRODUCT_ORIENTATIONS, PRODUCT_SIZES, PRODUCT_STYLES, PRODUCT_SUBJECTS, productDefaultValues } from '@/lib/constants';
-import { insertProductSchema, updateProductSchema } from '@/lib/validator';
+import { insertProductSchema } from '@/lib/validator';
 import { Product } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
@@ -572,8 +572,6 @@ const ProductForm = ({
                 </div>
 
                 <div className='flex flex-col md:flex-row gap-5'>
-
-
 
 
 

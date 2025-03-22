@@ -80,12 +80,12 @@ const SearchPage = async (props: {
     // console.log(q, category, price, rating, sort, page);
 
     // const categories = await getAllCategories();
-    
+
 
     // Get products
     const products = await getAllProducts({
         style,
-        subject, 
+        subject,
         medium,
         material,
         size,

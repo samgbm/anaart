@@ -17,9 +17,9 @@ const Homepage = async () => {
       {featuredProducts.length > 0 && <ProductCarousel data={featuredProducts} />}
 
       <ProductList title='Newest Arrivals' data={latestProducts} />
-      {/* <ViewAllProductsButton />
+      <ViewAllProductsButton />
       <DealCountdown />
-      <IconBoxes/> */}
+      <IconBoxes/>
     </div>
   );
 }
